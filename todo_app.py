@@ -42,7 +42,9 @@ def save_tasks(tasks):
 
 def add_task(tasks, description, status='pending'):
     """Adds a new task to memory with a description and status to the task list."""
+    task_id = len(tasks) + 1  # Generates  a unique task ID
     task = {        # Creates a new dictionary called 'task'
+        'id'       :  task_id,  #adds task id to the task dictionary
         'Description': description,       #Creates a new object string within task dictionary called 'Description.' with the value description  
         'Status': status                   #Creates a new object string within task dictionary called 'status', with the value status.
     }   #Closed parenthesis for the tasks dictionary
