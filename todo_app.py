@@ -1,5 +1,7 @@
 import json  # imports the default JSON module
 import os    # imports the os module to interact with the Operating System
+from datetime import datetime #Imports inbuilt Date/Time module to add Date and Time
+
 
 TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
 
@@ -43,10 +45,12 @@ def save_tasks(tasks):
 def add_task(tasks, description, status='pending'):
     """Adds a new task to memory with a description and status to the task list."""
     task_id = len(tasks) + 1  # Generates  a unique task ID
+    current_date = datetime.now().strftime("%Y-%M-%D %H:%M:%S") #Adds the currrent date and time from the sytems internal clock.
     task = {        # Creates a new dictionary called 'task'
         'id'       :  task_id,  #adds task id to the task dictionary
         'Description': description,       #Creates a new object string within task dictionary called 'Description.' with the value description  
-        'Status': status                   #Creates a new object string within task dictionary called 'status', with the value status.
+        'Status': status,                  #Creates a new object string within task dictionary called 'status', with the value status.
+        'Date'  : current_date           #Sets current date and time
     }   #Closed parenthesis for the tasks dictionary
     tasks.append(task)                  # Append the new task to the list of tasks
     save_tasks(tasks)             #saves tasks to JSON file.

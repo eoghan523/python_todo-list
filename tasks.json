@@ -1,10 +1,5 @@
 [
     {
-        "id": 3,
-        "Description": "Do a load of light laundry",
-        "Status": "half done"
-    },
-    {
         "id": 2,
         "Description": "Improve Python code",
         "Status": "pending"
