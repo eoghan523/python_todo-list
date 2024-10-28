@@ -110,21 +110,8 @@ def get_task_id(prompt, tasks):
 def main():
     """Main function of To-Do List application."""
     tasks = load_tasks()  # Load existing tasks from tasks.json
-    banner():  # Call the banner function to display the application banner.
-    print(""""""
-========================================================================================
-  _______    ____             _____     ____          _        _____    _____   _______ 
- |__   __|  / __ \           |  __ \   / __ \        | |      |_   _|  / ____| |__   __|
-    | |    | |  | |  ______  | |  | | | |  | |       | |        | |   | (___      | |   
-    | |    | |  | | |______| | |  | | | |  | |       | |        | |    \___ \     | |   
-    | |    | |__| |          | |__| | | |__| |       | |____   _| |_   ____) |    | |   
-    |_|     \____/           |_____/   \____/        |______| |_____| |_____/     |_|   
-          
-========================================================================================                                                                                     
-To Do List | A Python-powered To-Do List.
-By Eoghan (2024).
-=========================================================================================
-""" """)
+    banner() # Call the banner function to display the application banner
+  
     while True:   # Start an infinite loop to continuously display the menu until the user adds input or exits the application.
         
         # Main menu options
