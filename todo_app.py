@@ -60,31 +60,33 @@ def view_tasks(tasks):
         task = tasks[i]     
         print(f"{i + 1}. {task['Description']} - {task['Status']}")  #Prints an f string function with the function 'i + 1' {task['Description']} and {task['Status']} accesses the value from the key associated with description and status within the tasks dictionary.
 
-
-def update_task(tasks, task_id, new_description=None, new_status=None):
+# Function to handle updating of tasks.
+def update_task(tasks, task_id, new_description=None, new_status=None): 
     """Updates the description and/or status of a specified task."""
-    try:
-        task = tasks[task_id - 1]
-        if new_description:
-            task['Description'] = new_description  # Update the correct key
-        if new_status:
+    try:  #Try except logic block to handle updating tasks
+        task = tasks[task_id - 1]    # Access the task by its ID
+        if new_description:           # Update the task's description with the new value
+            task['Description'] = new_description  # Update the correct key 
+        if new_status:          # Update the task's status with the new value
             task['Status'] = new_status  # Update the correct key
-        save_tasks(tasks)
-    except IndexError:
+        save_tasks(tasks)          #Saves tasks to JSON file
+    except IndexError:   #except catch to handle any instance where the task ID does not correspond to any task
         print("Error: Task ID does not exist.")
-    except Exception as e:
-        print(f"An error occurred while updating the task: {e}")
+    except Exception as e:        # Handle any other exceptions that may occur and print the error message
+        print(f"An error occurred while updating the task: {e}")   #Prints eerror message for the user.  A {e} placeholder to embed the value of e in the string.
 
+#function to handle the deleting of tasks and task ids.
 def delete_task(tasks, task_id):
     """Deletes a specified task from the tasks list."""
-    try:
-        tasks.pop(task_id - 1)  # Remove the task
-        save_tasks(tasks)
-    except IndexError:
-        print("Error: Task ID does not exist.")
-    except Exception as e:
-        print(f"An error occurred while deleting the task: {e}")
+    try:  #try excetionn logic block to handle the delete task functions.
+        tasks.pop(task_id - 1)  # Remove the task using .pop() function.
+        save_tasks(tasks)       ## Save the updated task list to the JSON file
+    except IndexError:   #except catch to handle indexing error
+        print("Error: Task ID does not exist.") #prints error for the user task Id dosent exist
+    except Exception as e:    #Another except catch to handle exceptions
+        print(f"An error occurred while deleting the task: {e}") #prints an f string with the error message. A {e} placeholder to embed the value of e in the string.
 
+#This function get task id is defined to to handle and validate user input. 
 def get_task_id(prompt, tasks):
     """Prompts the user for a task ID and validates the input."""
     while True:
@@ -111,11 +113,13 @@ def main():
         print("4. Delete Task")
         print("5. Exit")
 
-        user_choice = input("Choose an option: ")
+        user_choice = input("Choose an option: ") #Defining the user_choice variable and giving it the value of input.
+#This If/elif/else block forms the main logic function of the menu list. 
 
+        #If the users input is the value equal to '1' then... 
         if user_choice == '1':
-            description = input('Add task description: ')
-            add_task(tasks, description)
+            description = input('Add task description: ') #input into the description
+            add_task(tasks, description) #adds task to 
         
         elif user_choice == '2':
             view_tasks(tasks)
