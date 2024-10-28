@@ -1,7 +1,12 @@
 [
     {
-        "id": 1,
-        "Description": "homework",
-        "Status": "pending"
+        "id": 2,
+        "Description": "Email landlord",
+        "Status": "completed"
+    },
+    {
+        "id": 3,
+        "Description": "Do a load of light laundry",
+        "Status": "half done"
     }
 ]
