@@ -25,8 +25,8 @@ def load_tasks():
     """Loads tasks from the tasks.json file and returns the list of tasks."""
     try:
         if os.path.exists(TASKS_FILE):  # Check if the file exists
-            with open(TASKS_FILE, 'r') as file:
-                return json.load(file)  # Load the list from the JSON file
+            with open(TASKS_FILE, 'r') as file: #opens the tasks.json file in read only mode
+                return json.load(file)  # Loads data from json file and returns it to a usable python object
         return []  # Return an empty list if the file doesn't exist
     except (FileNotFoundError, json.JSONDecodeError) as e: # Catches any errors related to file access.
         print(f"Error loading tasks from {TASKS_FILE}: {e}") #Prints an error message
