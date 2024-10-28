@@ -45,7 +45,7 @@ def save_tasks(tasks):
 def add_task(tasks, description, status='pending'):
     """Adds a new task to memory with a description and status to the task list."""
     task_id = len(tasks) + 1  # Generates  a unique task ID
-    current_date = datetime.now().strftime("%Y-%M-%D %H:%M:%S") #Adds the currrent date and time from the sytems internal clock.
+    current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S") #Adds the currrent date and time from the sytems internal clock.
     task = {        # Creates a new dictionary called 'task'
         'id'       :  task_id,  #adds task id to the task dictionary
         'Description': description,       #Creates a new object string within task dictionary called 'Description.' with the value description  
@@ -160,3 +160,4 @@ def main():
 # This line of code checks if the script is being run directly and not an imported module.
 if __name__ == "__main__":
     main()  # Run the main function to start the application
+1
