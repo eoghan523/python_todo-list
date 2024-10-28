@@ -5,7 +5,7 @@ TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
 
 def banner():
     """Displays the banner for the To-Do List application."""
-    print("""
+    print(r"""
 ========================================================================================
   _______    ____             _____     ____          _        _____    _____   _______ 
  |__   __|  / __ \           |  __ \   / __ \        | |      |_   _|  / ____| |__   __|
