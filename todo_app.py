@@ -102,46 +102,49 @@ def get_task_id(prompt, tasks):
 def main():
     """Main function of To-Do List application."""
     tasks = load_tasks()  # Load existing tasks from tasks.json
-    banner()  # Show the banner
+    banner()  # Call the banner function to display the application banner.
 
-    while True:
+    while True:   # Start an infinite loop to continuously display the menu until the user adds input or exits the application.
+        
         # Main menu options
-        print("\nTo-Do List menu:")
-        print("1. Add Task")
-        print("2. View Tasks")
-        print("3. Update Task")
-        print("4. Delete Task")
-        print("5. Exit")
+        print("\nTo-Do List menu:")   # Print a newline and the menu title.
+        print("1. Add Task")          # Print the option to add a task.
+        print("2. View Tasks")        # Print the option to view existing tasks.
+        print("3. Update Task")       # Print the option to update a specific task.
+        print("4. Delete Task")       # Print the option to delete a task.
+        print("5. Exit")              # Print the option to exit the application.
 
-        user_choice = input("Choose an option: ") #Defining the user_choice variable and giving it the value of input.
-#This If/elif/else block forms the main logic function of the menu list. 
+        user_choice = input("Choose an option: ") #Defining the user_choice variable and giving it the value of input. This line of code will promt the user for input
+
+        #This If/elif/else block forms the main logic function of the menu list. It guides the user selection.
 
         #If the users input is the value equal to '1' then... 
         if user_choice == '1':
-            description = input('Add task description: ') #input into the description
-            add_task(tasks, description) #adds task to 
+            description = input('Add task description: ') #Promt for the user to add a task description
+            add_task(tasks, description)                 # Call the add_task function to add the new task with the provided description.
         
-        elif user_choice == '2':
-            view_tasks(tasks)
+        elif user_choice == '2':      #if user selcts 2
+            view_tasks(tasks)       # This line of cod Calls the view_tasks function to display all current tasks.
         
-        elif user_choice == '3':
-            view_tasks(tasks)
-            task_id = get_task_id("Enter the task ID to update: ", tasks)
-            new_description = input("Enter new description (leave blank to keep current): ")
-            new_status = input("Enter new status (leave blank to keep current): ")
-            update_task(tasks, task_id, new_description or None, new_status or None)
+        elif user_choice == '3': #If users input is equal to 3 
+            view_tasks(tasks)    # Display current tasks so the user knows which one to update.
+            task_id = get_task_id("Enter the task ID to update: ", tasks)     # Get the task ID to update from the user.
+            new_description = input("Enter new description (leave blank to keep current): ")   # Prompt for a new description or leave blank for no change.
+            new_status = input("Enter new status (leave blank to keep current): ")             #Promt for the user to add new status or leave blank to keep its status as pending.
+            update_task(tasks, task_id, new_description or None, new_status or None)          # Call update_task with new values or 'none' if the input is left blank.
         
-        elif user_choice == '4':
-            view_tasks(tasks)
-            task_id = get_task_id("Enter the task ID to delete: ", tasks)
-            delete_task(tasks, task_id)
+        elif user_choice == '4':       #If the input is equal to '4'
+            view_tasks(tasks)          # Display the current tasks in memory for the user to select
+            task_id = get_task_id("Enter the task ID to delete: ", tasks)  #Get the task id forr the user to delete.
+            delete_task(tasks, task_id)     # Call delete_task to remove the selected task.
         
-        elif user_choice == '5':
-            print("Exiting the To-Do List application.")
-            break
+        elif user_choice == '5':      #if users input is equal to 5
+            print("Exiting the To-Do List application.")   #Print string to pompt the user to exit the todo app
+            break   #Break will exit the while loop function.
         
         else:
-            print("Invalid option. Please try again.")
+            print("Invalid option. Please try again.")    #The elso catch will catch any user input errorr that is not a valid input.
 
+# This line of code checks if the script is being run directly and not an imported module.
 if __name__ == "__main__":
-    main()  # Run the main function
+    main()  # Run the main function to start the application
