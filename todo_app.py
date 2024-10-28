@@ -28,36 +28,38 @@ def load_tasks():
             with open(TASKS_FILE, 'r') as file:
                 return json.load(file)  # Load the list from the JSON file
         return []  # Return an empty list if the file doesn't exist
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"Error loading tasks from {TASKS_FILE}: {e}")
-        return []  # Return an empty list
+    except (FileNotFoundError, json.JSONDecodeError) as e: # Catches any errors related to file access.
+        print(f"Error loading tasks from {TASKS_FILE}: {e}") #Prints an error message
+        return []  # Return an empty list on the error.
 
 def save_tasks(tasks):
     """Saves the current tasks to the tasks.json file."""
     try:
-        with open(TASKS_FILE, 'w') as file:
+        with open(TASKS_FILE, 'w') as file: #opens the JSON file in write mode.
             json.dump(tasks, file, indent=4)  # Writes tasks into JSON format
-    except Exception as e:
-        print(f"An error has occurred while saving the tasks: {e}")
+    except Exception as e:   # Catch any exceptions that occur during file writing
+        print(f"An error has occurred while saving the tasks: {e}")   #prints the error message
 
 def add_task(tasks, description, status='pending'):
     """Adds a new task to memory with a description and status to the task list."""
-    task = {
-        'Description': description,
-        'Status': status
-    }
-    tasks.append(task)  # Append the new task
-    save_tasks(tasks)
+    task = {        # Creates a new dictionary called 'task'
+        'Description': description,       #Creates a new object string within task dictionary called 'Description.' with the value description  
+        'Status': status                   #Creates a new object string within task dictionary called 'status', with the value status.
+    }   #Closed parenthesis for the tasks dictionary
+    tasks.append(task)                  # Append the new task to the list of tasks
+    save_tasks(tasks)             #saves tasks to JSON file.
 
-def view_tasks(tasks):
+#View tasks funtion for the app to handle viewing tasks
+def view_tasks(tasks):          
     """Displays all tasks in the list with their descriptions and statuses."""
-    if not tasks:
-        print("No tasks available. Start a new task...")
+    if not tasks:            #Checks if the task list is empty
+        print("No tasks available. Start a new task...")    #Prints prompt to user to add a task
         return
-
+    #For loop that indexes the tasks in a range
     for i in range(len(tasks)):
-        task = tasks[i]
-        print(f"{i + 1}. {task['Description']} - {task['Status']}")  # Use correct keys
+        task = tasks[i]     
+        print(f"{i + 1}. {task['Description']} - {task['Status']}")  #Prints an f string function with the function 'i + 1' {task['Description']} and {task['Status']} accesses the value from the key associated with description and status within the tasks dictionary.
+
 
 def update_task(tasks, task_id, new_description=None, new_status=None):
     """Updates the description and/or status of a specified task."""
