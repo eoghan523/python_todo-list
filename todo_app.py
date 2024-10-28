@@ -91,16 +91,22 @@ def delete_task(tasks, task_id):
 #This function get task id is defined to to handle and validate user input. 
 def get_task_id(prompt, tasks):
     """Prompts the user for a task ID and validates the input."""
+
+     # Starts a loop to repeatedly prompt for valid input
     while True:
         try:
+            # Asks the user to enter a task ID, converting the input to an integer
             task_id = int(input(prompt))
+              # Checks to see if the entered ID is within the valid range.
             if 1 <= task_id <= len(tasks):
-                return task_id
+                return task_id    # Returns the valid task ID
             else:
-                print("Error: Please enter a valid task ID.")
-        except ValueError:
-            print("Error: Please enter a number.")
+                #Esle catch for werror handling 
+                print("Error: Please enter a valid task ID.") #Prints error promting the user to enter a valid task ID.
+        except ValueError:       #Except catch to handle any value error inputs. 
+            print("Error: Please enter a number.") #Prints message to prompt user to enter a number.
 
+#The main function of the To-DO app.
 def main():
     """Main function of To-Do List application."""
     tasks = load_tasks()  # Load existing tasks from tasks.json
