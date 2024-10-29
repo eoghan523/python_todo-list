@@ -137,7 +137,7 @@ def main():
         
         elif user_choice == '2':      #if user selcts 2
             view_tasks(tasks)       # This line of cod Calls the view_tasks function to display all current tasks.
-        
+
         elif user_choice == '3': #If users input is equal to 3 
             view_tasks(tasks)    # Display current tasks so the user knows which one to update.
             task_id = get_task_id("Enter the task ID to update: ", tasks)     # Get the task ID to update from the user.
@@ -148,8 +148,14 @@ def main():
         elif user_choice == '4':       #If the input is equal to '4'
             view_tasks(tasks)          # Display the current tasks in memory for the user to select
             task_id = get_task_id("Enter the task ID to delete: ", tasks)  #Get the task id forr the user to delete.
-            delete_task(tasks, task_id)     # Call delete_task to remove the selected task.
-        
+            
+            confirm_delete = input("Are you sure you want to delete task {task_id}? (y/n): ").strip().lower() #Create a variable that prompts user imput to confirm deletion of a task. .strip() and .lower() clear whitespace and allow for both 'Y' and 'y' ad inputs
+            if confirm_delete == 'y':   #If condition, if the input value equal to 'y' then it will call on the delete function on line 154 and print confirmation.
+                 delete_task(tasks, task_id)     # Call delete_task to remove the selected task.
+                 print("Task deleted successfully!")  #Prints confirmation on successful deletion..
+            else: print("Delete cancelled.")
+
+                           
         elif user_choice == '5':      #if users input is equal to 5
             confirm_quit = input("Are you sure you want to quit? (y/n): ").strip().lower() # Prompts input from user to confirm if they want to quit app. .strip() and .lower() will strip the whitespace and allow for either 'Y' or 'y' as vailid input.
             if confirm_quit == 'y':   #If/Else conditional statement. If input is the vlue of 'y' then the application will print a banner and perform a break function. 
