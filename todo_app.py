@@ -48,9 +48,9 @@ def view_tasks(tasks):
     #For loop that indexes the tasks in a range
     for i in range(len(tasks)):
         task = tasks[i]     
-        print(f"{i + 1}. {task['Description']} - {task['Status']} - {tasks['Date']}")  #Prints an f string function with the function 'i + 1' {task['Description']} and {task['Status']} accesses the value from the key associated with description and status within the tasks dictionary.
+        print(f"{i + 1}. {task['Description']} - {task['Status']} - {task['Date']}")  #Prints an f string function with the function 'i + 1' {task['Description']} and {task['Status']} accesses the value from the key associated with description and status within the tasks dictionary.
 
-# Function to handle updating of tasks.
+# Function to handle updating of tasks.2
 def update_task(tasks, task_id, new_description=None, new_status=None): 
     """Updates the description and/or status of a specified task."""
     try:  #Try except logic block to handle updating tasks
