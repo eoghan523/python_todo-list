@@ -7,8 +7,6 @@ os.system('cls' if os.name == 'nt' else 'clear') #A conditional OS command to cl
 TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
 #'r' before the tripple quotation prints the ascii banner in raw format 
 
-
-
 def load_tasks():
     """Loads tasks from the tasks.json file and returns the list of tasks."""
     try:
@@ -50,7 +48,7 @@ def view_tasks(tasks):
     #For loop that indexes the tasks in a range
     for i in range(len(tasks)):
         task = tasks[i]     
-        print(f"{i + 1}. {task['Description']} - {task['Status']}")  #Prints an f string function with the function 'i + 1' {task['Description']} and {task['Status']} accesses the value from the key associated with description and status within the tasks dictionary.
+        print(f"{i + 1}. {task['Description']} - {task['Status']} - {tasks['Date']}")  #Prints an f string function with the function 'i + 1' {task['Description']} and {task['Status']} accesses the value from the key associated with description and status within the tasks dictionary.
 
 # Function to handle updating of tasks.
 def update_task(tasks, task_id, new_description=None, new_status=None): 
@@ -81,7 +79,6 @@ def delete_task(tasks, task_id):
 #This function get task id is defined to to handle and validate user input. 
 def get_task_id(prompt, tasks):
     """Prompts the user for a task ID and validates the input."""
-
      # Starts a loop to repeatedly prompt for valid input
     while True:
         try:
