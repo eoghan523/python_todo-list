@@ -119,10 +119,7 @@ def main():
     """Main function of To-Do List application."""
     
     tasks = load_tasks()  # Load existing tasks from tasks.json
-    banner()
-    
-  
-    
+    banner() #Calls the banner function after the main start
     while True:   # Start an infinite loop to continuously display the menu until the user adds input or exits the application.
         
         # Main menu options
