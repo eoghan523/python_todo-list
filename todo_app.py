@@ -2,7 +2,6 @@ import json  # imports the default JSON module
 import os    # imports the os module to interact with the Operating System
 from datetime import datetime #Imports inbuilt Date/Time module to add Date and Time
 
-os.system('cls' if os.name == 'nt' else 'clear') #A conditional OS command to clear the terminal for readability before the application starts. If os name is 'nt' (windows) use cls, all else os use 'clear'
 
 TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
 #'r' before the tripple quotation prints the ascii banner in raw format 
@@ -114,7 +113,7 @@ By Eoghan (2024).
 #The main function of the To-DO app.
 def main():
     """Main function of To-Do List application."""
-    
+    os.system('cls' if os.name == 'nt' else 'clear') #A conditional OS command to clear the terminal for readability before the application starts. If os name is 'nt' (windows) use cls, all else os use 'clear'    
     tasks = load_tasks()  # Load existing tasks from tasks.json
     banner() #Calls the banner function after the main start
     while True:   # Start an infinite loop to continuously display the menu until the user adds input or exits the application.
@@ -152,8 +151,11 @@ def main():
             delete_task(tasks, task_id)     # Call delete_task to remove the selected task.
         
         elif user_choice == '5':      #if users input is equal to 5
-            print("Exiting the To-Do List application.")   #Print string to pompt the user to exit the todo app
-            break   #Break will exit the while loop function.
+            confirm_quit = input("Are you sure you want to quit? (y/n): ").strip().lower() # Prompts input from user to confirm if they want to quit app. .strip() and .lower() will strip the whitespace and allow for either 'Y' or 'y' as vailid input.
+            if confirm_quit == 'y':   #If/Else conditional statement. If input is the vlue of 'y' then the application will print a banner and perform a break function. 
+                print("Exiting the To-Do List application.")   #Print string to pompt the user to exit the todo app
+                break   #Break will exit the while loop function.
+            else:  print("Returning to the app main menu.")  # Else condition that returns the user to the menu if the confirm_quit is not == 'y'.
         
         else:
             print("Invalid option. Please try again.")    #The elso catch will catch any user input errorr that is not a valid input.
