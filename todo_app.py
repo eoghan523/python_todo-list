@@ -2,27 +2,11 @@ import json  # imports the default JSON module
 import os    # imports the os module to interact with the Operating System
 from datetime import datetime #Imports inbuilt Date/Time module to add Date and Time
 
-os.system('cls' if os.name == 'nt' else 'clear') #A conditional OS command to clear the terminal for readability before the application starts. If os name is 'nt' (windows) use cls, all else os use 'clear' 
-
+os.system('cls' if os.name == 'nt' else 'clear') #A conditional OS command to clear the terminal for readability before the application starts. If os name is 'nt' (windows) use cls, all else os use 'clear'
 
 TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
 #'r' before the tripple quotation prints the ascii banner in raw format 
-def banner():
-    """Displays the banner for the To-Do List application."""
-    print(r""" 
-========================================================================================
-  _______    ____             _____     ____          _        _____    _____   _______ 
- |__   __|  / __ \           |  __ \   / __ \        | |      |_   _|  / ____| |__   __|
-    | |    | |  | |  ______  | |  | | | |  | |       | |        | |   | (___      | |   
-    | |    | |  | | |______| | |  | | | |  | |       | |        | |    \___ \     | |   
-    | |    | |__| |          | |__| | | |__| |       | |____   _| |_   ____) |    | |   
-    |_|     \____/           |_____/   \____/        |______| |_____| |_____/     |_|   
-          
-========================================================================================                                                                                     
-To Do List | A Python-powered To-Do List.
-By Eoghan (2024).
-=========================================================================================
-""")  # Displays the generated to-do list banner in ASCII and prints it.
+
 
 
 def load_tasks():
@@ -111,12 +95,32 @@ def get_task_id(prompt, tasks):
                 print("Error: Please enter a valid task ID.") #Prints error promting the user to enter a valid task ID.
         except ValueError:       #Except catch to handle any value error inputs. 
             print("Error: Please enter a number.") #Prints message to prompt user to enter a number.
+ 
+def banner():
+    """Displays the banner for the To-Do List application."""
+    print(r""" 
+========================================================================================
+  _______    ____             _____     ____          _        _____    _____   _______ 
+ |__   __|  / __ \           |  __ \   / __ \        | |      |_   _|  / ____| |__   __|
+    | |    | |  | |  ______  | |  | | | |  | |       | |        | |   | (___      | |   
+    | |    | |  | | |______| | |  | | | |  | |       | |        | |    \___ \     | |   
+    | |    | |__| |          | |__| | | |__| |       | |____   _| |_   ____) |    | |   
+    |_|     \____/           |_____/   \____/        |______| |_____| |_____/     |_|   
+          
+========================================================================================                                                                                     
+To Do List | A Python-powered To-Do List.
+By Eoghan (2024).
+=========================================================================================
+""")  # Displays the generated to-do list banner in ASCII and prints it.
+
 
 #The main function of the To-DO app.
 def main():
     """Main function of To-Do List application."""
+    
     tasks = load_tasks()  # Load existing tasks from tasks.json
-    banner() # Call the banner function to display the application banner
+    banner()
+    
   
     
     while True:   # Start an infinite loop to continuously display the menu until the user adds input or exits the application.
