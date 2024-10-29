@@ -4,7 +4,6 @@ from datetime import datetime #Imports inbuilt Date/Time module to add Date and 
 
 
 TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
-#'r' before the tripple quotation prints the ascii banner in raw format 
 
 def load_tasks():
     """Loads tasks from the tasks.json file and returns the list of tasks."""
@@ -94,6 +93,7 @@ def get_task_id(prompt, tasks):
  
 def banner():
     """Displays the banner for the To-Do List application."""
+    #'r' before the tripple quotation prints the ascii banner in raw format 
     print(r""" 
 ========================================================================================
   _______    ____             _____     ____          _        _____    _____   _______ 
