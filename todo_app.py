@@ -2,12 +2,14 @@ import json  # imports the default JSON module
 import os    # imports the os module to interact with the Operating System
 from datetime import datetime #Imports inbuilt Date/Time module to add Date and Time
 
+os.system('cls' if os.name == 'nt' else 'clear') #A conditional OS command to clear the terminal for readability before the application starts. If os name is 'nt' (windows) use cls, all else os use 'clear' 
+
 
 TASKS_FILE = 'tasks.json'  # Defines where to store the tasks.
-
+#'r' before the tripple quotation prints the ascii banner in raw format 
 def banner():
     """Displays the banner for the To-Do List application."""
-    print(r""" #'r' before the tripple quotation prints the ascii banner in raw format 
+    print(r""" 
 ========================================================================================
   _______    ____             _____     ____          _        _____    _____   _______ 
  |__   __|  / __ \           |  __ \   / __ \        | |      |_   _|  / ____| |__   __|
@@ -116,6 +118,7 @@ def main():
     tasks = load_tasks()  # Load existing tasks from tasks.json
     banner() # Call the banner function to display the application banner
   
+    
     while True:   # Start an infinite loop to continuously display the menu until the user adds input or exits the application.
         
         # Main menu options
@@ -160,4 +163,3 @@ def main():
 # This line of code checks if the script is being run directly and not an imported module.
 if __name__ == "__main__":
     main()  # Run the main function to start the application
-1
